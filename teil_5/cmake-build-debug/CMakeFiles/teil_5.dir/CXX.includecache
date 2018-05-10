@@ -1,0 +1,40 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/dominik/CLionProjects/teil_5/Wuerfel.cpp
+GL/freeglut.h
+-
+Wuerfel.h
+/home/dominik/CLionProjects/teil_5/Wuerfel.h
+
+/home/dominik/CLionProjects/teil_5/Wuerfel.h
+
+/home/dominik/CLionProjects/teil_5/Zylinder.cpp
+iostream
+-
+Zylinder.h
+/home/dominik/CLionProjects/teil_5/Zylinder.h
+
+/home/dominik/CLionProjects/teil_5/Zylinder.h
+GL/gl.h
+-
+cmath
+-
+cstdio
+-
+
+/home/dominik/CLionProjects/teil_5/main.cpp
+iostream
+-
+GL/freeglut.h
+-
+Zylinder.h
+/home/dominik/CLionProjects/teil_5/Zylinder.h
+Wuerfel.h
+/home/dominik/CLionProjects/teil_5/Wuerfel.h
+
