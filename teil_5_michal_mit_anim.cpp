@@ -1,7 +1,6 @@
 
 #include <iostream>
 #include <GL/freeglut.h>
-#include "Zylinder.h"
 #include "Wuerfel.h"
 
 int frame;
@@ -34,16 +33,16 @@ float wheel_right_3_end[7] = { 0, 4, -2, 90, 1, 0, 0 };
 float wheel_right_4_end[7] = { 0, 4, -4, 90, 1, 0, 0 };
 
 /* translate (x, y, z) + rotation (angle, x, y, z) + base radius*/
-float leg_left_start[8] = { 0, 2, 0, 90, 0, 1, 0, 2 };
-float leg_right_start[8] = { 0, 2, 0, 90, 0, 1, 0, 2 };
+float leg_left_start[8] = { 0, 2, 0, 90, 0, 1, 0, 1 };
+float leg_right_start[8] = { 0, 2, 0, 90, 0, 1, 0, 1 };
 
 /* translate (x, y, z) + rotation (angle, x, y, z) + base radius */
 float leg_left_end[8] = { 0, 0, 1.25, 90, 1, 0, 0, 0.75 };
 float leg_right_end[8] = { 0, 0, -1.25, 90, 1, 0, 0, 0.75 };
 
 /* translate (x, y, z) + rotation (angle, x, y, z) + base radius*/
-float arm_left_start[8] = { 6, 2, 0, 90, 0, 1, 0, 2 };
-float arm_right_start[8] = { 6, 2, 0, 90, 0, 1, 0, 2 };
+float arm_left_start[8] = { 6, 2, 0, 90, 0, 1, 0, 1 };
+float arm_right_start[8] = { 6, 2, 0, 90, 0, 1, 0, 1 };
 
 /* translate (x, y, z) + rotation (angle, x, y, z) + base radius */
 float arm_left_end[8] = { 0, 3, 0.75, 0, 0, 0, 0, 0.75 };
@@ -174,7 +173,7 @@ void RenderScene() {
 
 		float transformationProgress = (float) (frame % (cameraRotationsPerLoop * 360 * cameraRotationFaktor) - (360 * cameraRotationFaktor)) / ( (cameraRotationsPerLoop - 2) * 360 * cameraRotationFaktor);
 
-		std::cout << "transformation: " << transformationProgress << " = (" << frame % (cameraRotationsPerLoop * 360 * cameraRotationFaktor) << " - " << (360 * cameraRotationFaktor) << " ) / " << (360 * cameraRotationFaktor)  << std::endl;
+		std::cout << "transformation: " << transformationProgress << " = (" << frame % (cameraRotationsPerLoop * 360 * cameraRotationFaktor) << " - " << (360 * cameraRotationFaktor) << " ) / " << ((cameraRotationsPerLoop - 2) * 360 * cameraRotationFaktor)  << std::endl;
 		
 
 		glColor4f(1.0f, 0.0f, 0.0f, 1.0f);
@@ -538,15 +537,14 @@ void Reshape(int width,int height)
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     glViewport(0,0,width,height);
-    glOrtho(-10, 10, -10, 10, -20, 20);
+    glOrtho(-10, 10, -10, 10, -15, 15);
     //glFrustum(-5,5,-5,5,0,4);
     glMatrixMode(GL_MODELVIEW);
 }
 
 void Animate (int value)
 {
-	frame++;// = value;
-	//frame = value % (360 * cameraRotationFaktor) + (1 * 360 * cameraRotationFaktor);
+	frame = value;
     std::cout << "value=" << value << std::endl;
     glutPostRedisplay();
     int wait_msec = 10;
